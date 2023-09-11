@@ -127,7 +127,7 @@ const WalletConnet = ({
       setProvider("injected");
       toggleHandleWallet();
     } else {
-      window.open(`https://metamask.app.link/dapp${pagelocation}`);
+      window.open(`https://metamask.app.link/dapp/https://eas-87s4e15pd-monojkumar2001.vercel.app${pagelocation}`);
     }
     // await handleWalletActivation();
   };
