@@ -123,7 +123,7 @@ const WalletConnet = ({
   const handleMetamask = async () => {
     console.log("Handling MetaMask connection...");
     const metamask = await activate(connectors.injected);
-    if (matamask) {
+    if (metamask) {
       setProvider("injected");
       toggleHandleWallet();
     } else {
