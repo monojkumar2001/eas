@@ -2,24 +2,22 @@ import React, { useEffect, useState } from "react";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import Swal from "sweetalert2";
 import axios from "axios";
-import { useNavigate } from "react-router-dom"; // Removed useLocation as it's not used
+import { useNavigate, useLocation } from "react-router-dom"; // Removed useLocation as it's not used
 import { useWeb3React } from "@web3-react/core";
 import { connectors } from "../../wallet/connectors";
-import {ethers} from "ethers"
+import { ethers } from "ethers";
 
-const WalletConnet = ({ opt, walletConnect ,setWalletConnect,toggleHandleWallet}) => {
-  
-  const {
-    library,
-    account,
-    activate,
-  } = useWeb3React();
+const WalletConnet = ({
+  opt,
+  walletConnect,
+  setWalletConnect,
+  toggleHandleWallet,
+}) => {
+  const [pagelocation, setPageLocation] = useState(useLocation().pathname);
+  const { library, account, activate } = useWeb3React();
   const navigate = useNavigate();
   const [option, setOption] = useState(0);
   console.log("option : ", option);
-
-
-
 
   const [items, setItems] = useState({
     nft: "",
@@ -34,21 +32,18 @@ const WalletConnet = ({ opt, walletConnect ,setWalletConnect,toggleHandleWallet}
   const setProvider = (type) => {
     localStorage.setItem("provider", type);
   };
-  
 
   const handleWalletActivation = async () => {
     try {
       const provider = new ethers.providers.Web3Provider(window.ethereum);
       window.ethereum
-      .request({ method: "eth_requestAccounts" })
-      .then((result) => {
-        handleSign(new ethers.providers.Web3Provider(window.ethereum));
-      })
-      .catch((error) => {
-        console.log("Could not detect Account");
-      });
-      
-      
+        .request({ method: "eth_requestAccounts" })
+        .then((result) => {
+          handleSign(new ethers.providers.Web3Provider(window.ethereum));
+        })
+        .catch((error) => {
+          console.log("Could not detect Account");
+        });
     } catch (error) {
       if (error.code === "USER_DENIED_MESSAGE_SIGNATURE") {
         console.log("User rejected the signing request.");
@@ -69,8 +64,7 @@ const WalletConnet = ({ opt, walletConnect ,setWalletConnect,toggleHandleWallet}
     }
   };
 
-  
-  const verify = (msg, sig, add)  => {
+  const verify = (msg, sig, add) => {
     if (!library) return;
     try {
       const actualAddress = ethers.utils.verifyMessage(msg, sig);
@@ -128,18 +122,22 @@ const WalletConnet = ({ opt, walletConnect ,setWalletConnect,toggleHandleWallet}
 
   const handleMetamask = async () => {
     console.log("Handling MetaMask connection...");
-    await activate(connectors.injected);
-    setProvider("injected");
-    toggleHandleWallet()
+    const metamask = await activate(connectors.injected);
+    if (matamask) {
+      setProvider("injected");
+      toggleHandleWallet();
+    } else {
+      window.open(`https://metamask.app.link/dapp${pagelocation}`);
+    }
     // await handleWalletActivation();
   };
 
   const handleCoinBase = async () => {
     console.log("Handling Coinbase Wallet connection...");
-    await activate(connectors.coinbaseWallet)
-    
+    await activate(connectors.coinbaseWallet);
+
     setProvider("coinbaseWallet");
-    toggleHandleWallet()
+    toggleHandleWallet();
     await handleWalletActivation();
   };
 
@@ -150,14 +148,13 @@ const WalletConnet = ({ opt, walletConnect ,setWalletConnect,toggleHandleWallet}
   }, []);
 
   useEffect(() => {
-  const provider =  localStorage.getItem("provider")
-    if (provider){ activate(connectors[provider])};
-    console.log(provider)
+    const provider = localStorage.getItem("provider");
+    if (provider) {
+      activate(connectors[provider]);
+    }
+    console.log(provider);
   }, []);
 
-
-
- 
   return (
     <>
       {walletConnect && (
@@ -174,7 +171,7 @@ const WalletConnet = ({ opt, walletConnect ,setWalletConnect,toggleHandleWallet}
                 onClick={toggleHandleWallet}
               ></button>
             </div>
-            <div className="modal-body" >
+            <div className="modal-body">
               <div className="wallet-content-wrapper d-flex flex-column gap-3">
                 <button
                   onClick={handleMetamask}
@@ -204,7 +201,6 @@ const WalletConnet = ({ opt, walletConnect ,setWalletConnect,toggleHandleWallet}
           </div>
         </div>
       )}
-
     </>
   );
 };
