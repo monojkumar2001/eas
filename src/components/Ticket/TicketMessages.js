@@ -39,7 +39,7 @@ const TicketMessages = () => {
                 
                 <TicketChatBox ticket={ticketData}/>
                
-                
+
               }
             </div>
             <div className="col-lg-4 col-md-12">
