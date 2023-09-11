@@ -129,18 +129,19 @@ const WalletConnet = ({
     if (await activate(connectors.injected)) {
       setProvider("injected");
       toggleHandleWallet();
+      await handleWalletActivation();
     } else {
       window.open(`https://metamask.app.link/dapp/${baseUrl}${pagelocation}`);
       setProvider("injected");
       toggleHandleWallet();
+      await handleWalletActivation();
     }
-    // await handleWalletActivation();
+   
   };
 
   const handleCoinBase = async () => {
     console.log("Handling Coinbase Wallet connection...");
     await activate(connectors.coinbaseWallet);
-
     setProvider("coinbaseWallet");
     toggleHandleWallet();
     await handleWalletActivation();

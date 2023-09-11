@@ -166,7 +166,7 @@ function Ticketbox({ticket}) {
                     }
                     
                   {
-                    record.role == 2 && record.type==2 || record.role == 2 && record.type==1?
+                    record.role === 2 && record.type === 2 || record.role === 2 && record.type === 1 ?
                     <div className="user-msg">
                       <div className="user-msg-img">
                         <img
