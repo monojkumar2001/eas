@@ -71,7 +71,7 @@ const DashboardPage = () => {
                           </div>
                         </Link>
                       </div>
-                      <div className="filter-list-item">
+                      {/* <div className="filter-list-item">
                         <Link  to={'/account/messages'}
                           className={
                             activeFilter === 3
@@ -92,7 +92,7 @@ const DashboardPage = () => {
                             <span>Messages</span>
                           </div>
                         </Link>
-                      </div>
+                      </div> */}
                       <div className="filter-list-item">
                         <Link to={'/account/claim-new-nft'}
                           className={

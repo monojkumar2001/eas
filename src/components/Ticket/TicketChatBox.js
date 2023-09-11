@@ -21,8 +21,9 @@ function Ticketbox({ticket}) {
       setLoading(false)
     })
   }, [renderme])
-  
 
+
+  
   const handleInput = (e) => {
     if(e.target.type == 'file'){
       setInputValue({
@@ -99,7 +100,7 @@ function Ticketbox({ticket}) {
   }
  
   return (
-    <>
+    <div className="chat-box-con">
       <div className="msg-user-option">
         <div className="msg-user">
           <img
@@ -287,7 +288,7 @@ function Ticketbox({ticket}) {
           <div className="sending-btn">
             <button type="submit">
               <img
-                src="/images/sending-icon.svg"
+                src="/images/sending-btn.svg"
                 alt="User"
                 height="22"
                 width="22"
@@ -297,7 +298,7 @@ function Ticketbox({ticket}) {
         </div>
       </div>
   </form>        
-    </>
+    </div>
   );
 }
 

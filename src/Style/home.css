@@ -448,9 +448,6 @@
   font-family: var(--secondary-font);
   text-align: center;
 }
-.styles_faq-row-wrapper__3vA1D .styles_row-body__1NvUo .styles_faq-row__2YF3c{
-  z-index: -1;
-}
 .faq-still-question p a {
   color: var(--main-color);
   text-decoration: underline;
@@ -531,6 +528,12 @@ display: none;
 }
 .eas-affiliate-img {
   margin-top: 40px;
+}
+.use-cases-right-item{
+  background-image: none;
+}
+.styles_faq-row-wrapper__3vA1D .styles_row-body__1NvUo .styles_faq-row__2YF3c{
+  z-index: 0;
 }
 }
 @media screen and (max-width: 576px) {

@@ -14,9 +14,11 @@ const TicketMessages = () => {
          axios.get(`api/ticket/${id.id}`).then(res => {
             setTicketData(res.data.data)
             setLoading(false);
-            console.log(res.data.data)
+            
           })
     }, [id])
+
+    console.log(ticketData)
   
     if(loading){
       return <ColorRing

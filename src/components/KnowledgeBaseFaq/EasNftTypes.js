@@ -18,7 +18,7 @@ const EasNftTypes = ({page}) => {
                 alt=""
               />
             </span>
-            <Link to={`/docs/${res.id}`} className="faq-title-item">
+            <Link to='' className="faq-title-item">
               {res.page}
             </Link>
           </div>

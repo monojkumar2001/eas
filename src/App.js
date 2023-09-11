@@ -81,11 +81,11 @@ function App() {
             <Route path="/account" element={<DashboardPage />}>
               <Route index element={<AccountDetails />} />
               <Route path="/account/my-nft" element={<MyNfts />} />
-              <Route path="/account/messages" element={<TicketMessages />} />
               <Route path="/account/claim-new-nft" element={<DynamicForm />} />
               <Route path="/account/my-referral" element={<Referral />} />
               <Route path="/account/contact-us" element={<ContactUs />} />
               <Route path="/account/ticket" element={<Ticket />} />
+              <Route path="/account/ticket/:id" element={<TicketMessages />} />
             </Route>
           </Route>
           <Route path="/docs" element={<KnowledgeBaseFaq/>} />

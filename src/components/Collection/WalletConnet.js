@@ -87,7 +87,7 @@ const WalletConnet = ({
             Swal.fire("success", res.data.message, "success");
           });
           localStorage.setItem("user_id", add);
-          window.location.reload();
+          // window.location.reload();
         }
       }
     } catch (e) {
@@ -125,23 +125,28 @@ const WalletConnet = ({
   };
 
   const handleMetamask = async () => {
+   try{
     console.log("Handling MetaMask connection...");
-    if (await activate(connectors.injected)) {
-      setProvider("injected");
-      toggleHandleWallet();
-      await handleWalletActivation();
-    } else {
+    const metamask =  activate(connectors.injected)
+    if (!metamask) {
+      console.log("error")
       window.open(`https://metamask.app.link/dapp/${baseUrl}${pagelocation}`);
       setProvider("injected");
       toggleHandleWallet();
       await handleWalletActivation();
-    }
+    } 
+    setProvider("injected");
+    toggleHandleWallet();
+    await handleWalletActivation();
    
+   }catch(e){
+    console.log(e)
+   }
   };
 
   const handleCoinBase = async () => {
     console.log("Handling Coinbase Wallet connection...");
-    await activate(connectors.coinbaseWallet);
+    activate(connectors.coinbaseWallet);
     setProvider("coinbaseWallet");
     toggleHandleWallet();
     await handleWalletActivation();
