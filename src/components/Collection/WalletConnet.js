@@ -13,6 +13,10 @@ const WalletConnet = ({
   setWalletConnect,
   toggleHandleWallet,
 }) => {
+
+  const baseUrl = "eas-jade.vercel.app/"
+
+
   const [pagelocation, setPageLocation] = useState(useLocation().pathname);
   const { library, account, activate } = useWeb3React();
   const navigate = useNavigate();
@@ -122,12 +126,13 @@ const WalletConnet = ({
 
   const handleMetamask = async () => {
     console.log("Handling MetaMask connection...");
-    const metamask = await activate(connectors.injected);
-    if (metamask) {
+    if (await activate(connectors.injected)) {
       setProvider("injected");
       toggleHandleWallet();
     } else {
-      window.open(`https://metamask.app.link/dapp/https://eas-87s4e15pd-monojkumar2001.vercel.app${pagelocation}`);
+      window.open(`https://metamask.app.link/dapp/${baseUrl}${pagelocation}`);
+      setProvider("injected");
+      toggleHandleWallet();
     }
     // await handleWalletActivation();
   };
