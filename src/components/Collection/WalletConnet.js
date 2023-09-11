@@ -9,19 +9,10 @@ import {ethers} from "ethers"
 
 const WalletConnet = ({ opt, walletConnect ,setWalletConnect,toggleHandleWallet}) => {
   
-  useEffect(()=>{
-    if(walletConnect === true){
-      <body style={{overflow:"hidden"}}></body>
-    }
-  })
-   
   const {
     library,
-
     account,
     activate,
-    deactivate,
-    active,
   } = useWeb3React();
   const navigate = useNavigate();
   const [option, setOption] = useState(0);
@@ -140,7 +131,7 @@ const WalletConnet = ({ opt, walletConnect ,setWalletConnect,toggleHandleWallet}
     await activate(connectors.injected);
     setProvider("injected");
     toggleHandleWallet()
-    await handleWalletActivation();
+    // await handleWalletActivation();
   };
 
   const handleCoinBase = async () => {
