@@ -4,7 +4,7 @@ import TicketDetailsItem from "./TicketDetailsItem";
 import { ColorRing } from 'react-loader-spinner'
 import axios from "axios";
 import {useParams } from "react-router-dom";
-
+ 
 const TicketMessages = () => {
   const id = useParams();
   const [loading, setLoading] = useState(true);
@@ -39,6 +39,7 @@ const TicketMessages = () => {
                 
                 <TicketChatBox ticket={ticketData}/>
                
+                
               }
             </div>
             <div className="col-lg-4 col-md-12">
