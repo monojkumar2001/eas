@@ -4,6 +4,7 @@ import TicketDetailsItem from "./TicketDetailsItem";
 import { ColorRing } from 'react-loader-spinner'
 import axios from "axios";
 import {useParams } from "react-router-dom";
+import Loading2 from "../Loading/Loading2";
  
 const TicketMessages = () => {
   const id = useParams();
@@ -21,16 +22,20 @@ const TicketMessages = () => {
     console.log(ticketData)
   
     if(loading){
-      return <ColorRing
-      visible={true}
-      height="40"
-      width="40"
-      ariaLabel="blocks-loading"
-      wrapperStyle={{}}
-      wrapperClass="blocks-wrapper"
-      colors={['#e15b64', '#f47e60', '#f8b26a', '#abbd81', '#849b87']}
-    />;
+      return <Loading2/>;
     }
+  
+    // if(loading){
+    //   return <ColorRing
+    //   visible={true}
+    //   height="40"
+    //   width="40"
+    //   ariaLabel="blocks-loading"
+    //   wrapperStyle={{}}
+    //   wrapperClass="blocks-wrapper"
+    //   colors={['#e15b64', '#f47e60', '#f8b26a', '#abbd81', '#849b87']}
+    // />;
+    // }
   return (
     <>
       <div className="content-eas-nft-wrapper">

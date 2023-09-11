@@ -58,10 +58,14 @@ const NftSaleCollectionPage = () => {
     getCategory();
     // setLoading(false);
   }, [activeNfts]);
-
+  if (loading) {
+    return (
+      <Loading/>
+    );
+  }
   return (
     <>
-    {!loading ? (
+
  <div className="my-nfts-wrapper my-collection-page">
  <div className="container">
    <div className="dashboard-header-item d-flex align-items-center gap-3">
@@ -128,9 +132,7 @@ const NftSaleCollectionPage = () => {
    </div>
  </div>
 </div>
-    ):(
-      <Loading/>
-    )}
+   
      
     </>
   );

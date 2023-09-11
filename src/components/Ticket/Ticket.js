@@ -3,9 +3,10 @@ import {FaSearch} from "react-icons/fa";
 import TicketNewModel from "./TicketNewModel";
 import TicketListItem from "./TicketListItem";
 import axios from "axios";
+import Loading2 from "../Loading/Loading2";
 
 const Ticket = () => {
-
+  const [loading, setLoading] = useState(true);
   const [list, setList] = useState([])
   const [tickets, setTickets] = useState([])
   const [subject, setSubject] = useState([])
@@ -28,6 +29,7 @@ const Ticket = () => {
     axios.get(`api/ticket/all/${localStorage.getItem('user_id')}`).then(tic => {
       setTickets(tic.data.data)
       setList(tic.data.data)
+      setLoading(false);
     })
   }, [renderAgain])
 
@@ -122,6 +124,9 @@ const filterData = () => {
 useEffect(() => {
   filterData();
 }, [search,option])
+if(loading){
+  return <Loading2/>;
+}
 
   return (
     <>

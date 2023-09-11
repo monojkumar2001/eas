@@ -106,7 +106,7 @@ const [loading, setLoading]=useState(false);
                 if (nft.data && nft.data.image) {
                   return (
                     <MySingleNft
-                      key={i}
+                    index={i}
                       tokenId={nft.tokenId}
                       image={nft.data.image}
                       name={nft.data.name}
@@ -115,7 +115,7 @@ const [loading, setLoading]=useState(false);
                 } else {
                   return (
                     <MySingleNft
-                      key={i}
+                      index={i}
                       tokenId={nft.tokenId}
                       image={null}
                       name={null}

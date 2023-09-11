@@ -18,6 +18,7 @@ const NewsPageDetails = () => {
     });
   }, [id]);
  
+  
 
 
   return (
@@ -76,7 +77,7 @@ const NewsPageDetails = () => {
                   />
                 </svg>
 
-                <p className="urbanist-grey-15">{data.created_date}</p>
+                <p className="urbanist-grey-15">{data.created_at}</p>
               </div>
             </div>
           </div>

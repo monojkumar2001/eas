@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { convertIpfsAddress } from "../../utils";
 import { ethers } from "ethers";
-import { RotatingLines } from 'react-loader-spinner'
 import { MarketPlace_Address, Market_ABI, contact_address } from "../../config";
 import Swal from "sweetalert2";
 import Web3 from "web3";
@@ -13,17 +12,15 @@ const MySingleNft = (props) => {
   const [isListed, setIsListed] = useState(false);
   const isList = async () => {
     try {
-
       const marketContract = new web3.eth.Contract(
         Market_ABI,
-        MarketPlace_Address,
+        MarketPlace_Address
       );
-      const isNFTListed = await marketContract.methods.isNFTListed(
-        contact_address,
-        props.tokenId
-      ).call();
+      const isNFTListed = await marketContract.methods
+        .isNFTListed(contact_address, props.tokenId)
+        .call();
 
-      console.log(isNFTListed)
+      console.log(isNFTListed);
 
       setIsListed(isNFTListed);
     } catch (e) {
@@ -73,17 +70,8 @@ const MySingleNft = (props) => {
 
   return (
     <>
-{
-  props ? props:     <RotatingLines
-  strokeColor="grey"
-  strokeWidth="5"
-  animationDuration="0.75"
-  width="96"
-  visible={true}
-/>
-}
       <div className="images-card d-flex align-items-center justify-content-center flex-column">
-        <Link to={`/nft-details/${props.tokenId}`} key={props.i}>
+        <Link to={`/nft-details/${props.tokenId}`} key={props.index}>
           <div className="nft-img">
             <img src={convertIpfsAddress(props.image) || null} alt="" />
           </div>

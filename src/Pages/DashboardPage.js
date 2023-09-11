@@ -71,28 +71,7 @@ const DashboardPage = () => {
                           </div>
                         </Link>
                       </div>
-                      {/* <div className="filter-list-item">
-                        <Link  to={'/account/messages'}
-                          className={
-                            activeFilter === 3
-                              ? "filter-item-bar active-filter-item-bar"
-                              : "filter-item-bar"
-                          }
-                          onClick={() => {
-                            toggleFilter(3);
-                          }}
-                        >
-                          <div
-                            className="filter-left-items d-flex align-items-center gap-2 "
-                            onClick={toggleFilterMenu}
-                          >
-                            <div className="filter-type">
-                              <img src="/images/dashboard/messages.svg" alt="" />
-                            </div>
-                            <span>Messages</span>
-                          </div>
-                        </Link>
-                      </div> */}
+                     
                       <div className="filter-list-item">
                         <Link to={'/account/claim-new-nft'}
                           className={
@@ -112,31 +91,6 @@ const DashboardPage = () => {
                               <img src="/images/dashboard/claim.svg" alt="" />
                             </div>
                             <span>Claim New NFTs</span>
-                          </div>
-                        </Link>
-                      </div>
-                      <div className="filter-list-item">
-                        <Link to={'/account/my-referral'}
-                          className={
-                            activeFilter === 5
-                              ? "filter-item-bar active-filter-item-bar"
-                              : "filter-item-bar"
-                          }
-                          onClick={() => {
-                            toggleFilter(5);
-                          }}
-                        >
-                          <div 
-                            className="filter-left-items d-flex align-items-center gap-2 "
-                            onClick={toggleFilterMenu}
-                          >
-                            <div className="filter-type">
-                              <img
-                                src="/images/dashboard/referral.svg"
-                                alt=""
-                              />
-                            </div>
-                            <span>My Referrals</span>
                           </div>
                         </Link>
                       </div>
